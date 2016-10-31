@@ -4,5 +4,5 @@
  * Scheduled task to generate tweets and send it to Telegram
  */
 
-require('dotenv').config()
+require('dotenv').config({ silent: true })
 require('./src/make-tweets.js')()
