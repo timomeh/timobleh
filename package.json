@@ -16,13 +16,13 @@
   "license": "GNU GPLv3",
   "dependencies": {
     "dotenv": "^2.0.0",
-    "html-entities": "^1.2.0",
     "markov-chains": "^1.0.2",
     "node-telegram-bot-api": "^0.24.0",
     "redis": "^2.6.3",
     "twitter": "^1.4.0"
   },
   "devDependencies": {
-    "csv-parser": "^1.11.0"
+    "csv-parser": "^1.11.0",
+    "html-entities": "^1.2.0"
   }
 }

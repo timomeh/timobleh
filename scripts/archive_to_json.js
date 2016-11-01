@@ -7,8 +7,9 @@
 
 const csv = require('csv-parser')
 const fs = require('fs')
+const path = require('path')
 
-const writeStream = fs.createWriteStream('tweets.json')
+const writeStream = fs.createWriteStream(path.resolve('..', 'tweets.json'))
 
 writeStream.write('[\n')
 

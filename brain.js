@@ -5,4 +5,4 @@
  */
 
 require('dotenv').config({ silent: true })
-require('./src/make-tweets.js')()
+require('./make-tweets.js')(10)

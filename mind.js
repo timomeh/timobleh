@@ -8,24 +8,17 @@ require('dotenv').config({ silent: true })
 
 const TimoblehBot = require('./lib/timobleh-bot')
 const Twitter = require('./lib/twitter')
-const db = require('./lib/database')
+const Database = require('./lib/database')
+const makeTweets = require('./make-tweets.js')
 
 const bot = new TimoblehBot({ polling: true })
+const db = new Database()
 
 /**
- * EventListener when I clicked on Tweet Button in Telegram.
- * Send tweet.
+ * Listen for callback_query Event.
  */
-bot.telegram.on('callback_query', data => {
-  // Only let myself talk to him
-  if (data.from.id !== +process.env.CHAT_ID) {
-    bot.sendMessage('I\'m not your master.')
-    return
-  }
-
-  let sha = data.data
-
-  db.get(sha)
+bot.on('callback_query', data => {
+  db.get(data.data)
     .then(tweet => {
       return (new Twitter()).tweet(tweet)
     })
@@ -40,14 +33,12 @@ bot.telegram.on('callback_query', data => {
 })
 
 /**
- * EventListener for /flush someText
+ * Listen for "/flush <sometext>" command.
+ * Will flush the database.
+ * Sometext is necessary because the TelegramBot Module needs
+ * something to match.
  */
-bot.telegram.onText(/\/flush (.+)/, msg => {
-  if (msg.from.id !== +process.env.CHAT_ID) {
-    bot.sendMessage('I\'m not your master.')
-    return
-  }
-
+bot.onText(/\/flush (.+)/, msg => {
   db.flush()
     .then(() => {
       bot.sendMessage('Flushed Database. Don\'t send previous tweet, plox.')
@@ -58,20 +49,15 @@ bot.telegram.onText(/\/flush (.+)/, msg => {
 })
 
 /**
- * EventListener for /gimme <Number>
- * Returns specified amount of random tweets.
+ * Listen for "/gimme <Integer>" command.
+ * Will return provided Number of Tweets.
  */
-bot.telegram.onText(/\/gimme (.+)/, (msg, match) => {
-  if (msg.from.id !== +process.env.CHAT_ID) {
-    bot.sendMessage('I\'m not your master.')
-    return
-  }
-
+bot.onText(/\/gimme (.+)/, (msg, match) => {
   let number = +match[1]
   if (!number) {
     bot.sendMessage(`${match[0]} is not a valid number, dumbass.`)
     return
   }
 
-  require('./src/make-tweets.js')(number, true)
+  makeTweets(number)
 })
