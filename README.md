@@ -14,6 +14,12 @@ I don't want it to spit out a nonsense tweet every few minutes. So before it twe
   <img alt="Tweets" src="https://raw.githubusercontent.com/timomeh/timobleh/master/.github/tweets.png" width="700">
 </p>
 
+… and the Telegram Bot looks like this.
+
+<p align="center">
+  <img alt="Tweets" src="https://raw.githubusercontent.com/timomeh/timobleh/master/.github/telegram.png" width="753">
+</p>
+
 ## Fork it
 
 It shouldn't be hard to set this up for yourself.
