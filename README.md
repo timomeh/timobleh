@@ -8,7 +8,7 @@ This Twitter Bot uses 7.984 Tweets (Oct 2012 - Oct 2016) from my Twitter Account
 
 ## But…
 
-I don't want it to spit out a nonsense tweet every few minutes. So before it tweets something, it sends me a few randomly generated tweets to my Telegram Account. I can *approve* a tweet directly in Telegram, which then will be tweeted by the bot. I can't change a tweet in this approval process, it stays truly random (stochastic).
+I don't want it to spit out a nonsense tweet every few minutes. So before it tweets something, it sends me a few randomly generated tweets to my Telegram Account. I can *approve* a tweet directly in Telegram, which then will be tweeted by the bot. I can't change a tweet in this approval process, it stays truly random (stochastic). Props to [@_chrispop](https://twitter.com/_chrispop) for the idea of an approval process and for the suggestion to connect it to Telegram.
 
 <p align="center">
   <img alt="Tweets" src="https://raw.githubusercontent.com/timomeh/timobleh/master/.github/tweets.png" width="700">
